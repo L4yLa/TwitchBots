@@ -1,5 +1,6 @@
 import os
 import simpleaudio
+import pyautogui
 from twitchio.ext import commands
 
 from chatbotstorage import ChatbotStorage
@@ -44,6 +45,18 @@ async def test_command(ctx):
 #			dat.unLurk(ctx.author.name)
 #			print(f'{ctx.author.name} <- unlurk')
 
+# Discordのリンクを表示するcommand
+#	@bot.command(name='discord')
+#	async def discord_command(ctx):
+#		ctx.channel.send("Please join my discord server!! https://discord.gg/abcdwf")
+#
+# Twitterのリンクを表示するcommand
+#	@bot.command(name='twitter')
+#	async def twitter_command(ctx):
+#		ctx.channel.send("Please follow my twitter!! https://twitter.com/twitter")
+
+
+
 #
 #  commands (mods only)
 # 
@@ -75,7 +88,36 @@ async def beep_command(ctx):
 	simpleaudio.stop_all()
 	gBeep.play()
 
-
+@bot.command(name='motion', aliases=['m'])
+async def motion_command(ctx, *arg):
+	if not ctx.author.is_mod:
+		return
+	if arg[0] == "enable":
+		dat.motionEN = True
+	elif arg[0] == "disable":
+		dat.motionEN = False
+	elif arg[0] == "test":
+		if dat.motionEN:
+			pyautogui.typewrite(dat.motionkey)
+	elif arg[0] == "q":
+		dat.motionkey = arg[0]
+	elif arg[0] == "w":
+		dat.motionkey = arg[0]
+	elif arg[0] == "e":
+		dat.motionkey = arg[0]
+	elif arg[0] == "f9":
+		dat.motionkey = arg[0]
+	elif arg[0] == "f10":
+		dat.motionkey = arg[0]
+	elif arg[0] == "f11":
+		dat.motionkey = arg[0]
+	elif arg[0] == "f12":
+		dat.motionkey = arg[0]
+	elif arg[0] == "specify":
+		dat.motionkey = arg[1]
+	else:
+		print("Invalid motion argument:", arg[0])
+	
 #
 #  messages
 # 
@@ -92,6 +134,10 @@ async def event_message(message):
 			simpleaudio.stop_all()
 			gBeep.play()
 
+			# 有効時に登録したキーを入力:type registered key if enabled
+			if dat.motionEN:
+				pyautogui.typewrite([dat.motionkey])
+
 			# メッセージを表示：print message
 			print(f'[New Viewer] {message.author.name} is coming!') # to console
 	
@@ -100,5 +146,6 @@ async def event_message(message):
 
 
 if __name__ == "__main__":
+	dat.motionkey = "e"
+	dat.motionEN = False
 	bot.run()
-
