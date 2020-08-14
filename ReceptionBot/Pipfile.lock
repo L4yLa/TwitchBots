@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "e8258aa54b2b302251c6f8b62789f445568f504c3edc561369ed2d246945440e"
+            "sha256": "9e31f1d908c5f08fcfbfed8136169f7c0c89a61018fac801d1a70bfa908c817d"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -94,6 +94,13 @@
             "markers": "python_version >= '3.5'",
             "version": "==4.7.6"
         },
+        "obs-websocket-py": {
+            "hashes": [
+                "sha256:52b9bb3f2504f66f135909b165133ca3a8f13f91bc8554dad8623169f75d688f"
+            ],
+            "index": "pypi",
+            "version": "==0.5.1"
+        },
         "pillow": {
             "hashes": [
                 "sha256:0295442429645fa16d05bd567ef5cff178482439c9aad0411d3f0ce9b88b3a6f",
@@ -184,6 +191,14 @@
             "index": "pypi",
             "version": "==1.0.4"
         },
+        "six": {
+            "hashes": [
+                "sha256:30639c035cdb23534cd4aa2dd52c3bf48f06e5f4a941509c8bafd8ce11080259",
+                "sha256:8b74bedcbbbaca38ff6d7491d76f2b06b3592611af620f8426e82dddb04a5ced"
+            ],
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
+            "version": "==1.15.0"
+        },
         "twitchio": {
             "hashes": [
                 "sha256:03bf880fdb41440dc82d8f636aa33948536266694dc98bfbbb599e918844e8cc",
@@ -200,6 +215,13 @@
             ],
             "markers": "python_version < '3.8'",
             "version": "==3.7.4.2"
+        },
+        "websocket-client": {
+            "hashes": [
+                "sha256:0fc45c961324d79c781bab301359d5a1b00b13ad1b10415a4780229ef71a5549",
+                "sha256:d735b91d6d1692a6a181f2a8c9e0238e5f6373356f561bb9dc4c7af36f452010"
+            ],
+            "version": "==0.57.0"
         },
         "websockets": {
             "hashes": [

@@ -2,6 +2,7 @@ import os
 import simpleaudio
 import pyautogui
 from twitchio.ext import commands
+from obswebsocket import obsws, requests
 
 from chatbotstorage import ChatbotStorage
 
@@ -60,7 +61,7 @@ async def test_command(ctx):
 #
 #  commands (mods only)
 # 
-@bot.command(name='quit')
+@bot.command(name='quit', aliases=['q'])
 async def quit_command(ctx):
 	if not ctx.author.is_mod:
 		return
@@ -87,6 +88,35 @@ async def beep_command(ctx):
 		return
 	simpleaudio.stop_all()
 	gBeep.play()
+
+@bot.command(name='oconnect', aliases=['oc'])
+async def obs_connect_command(ctx):
+	if not ctx.author.is_mod:
+		return
+	dat.ws = obsws('localhost', 4444, "password") # change as your OBS setting
+	dat.ws.connect()
+
+@bot.command(name='oscenelist', aliases=['ol','osl','oscenes'])
+async def obs_scenelist_command(ctx):
+	if not ctx.author.is_mod:
+		return
+	scenes = dat.ws.call(requests.GetSceneList())
+	if scenes.status:
+		print("[Scenes]")
+		for s in scenes.getScenes():
+			print(s["name"])
+
+@bot.command(name='oscene', aliases=['os'])
+async def obs_scenechange_command(ctx, name):
+	if not ctx.author.is_mod:
+		return
+	res = dat.ws.call(requests.SetCurrentScene(name))
+
+@bot.command(name='odisconnect', aliases=['odc'])
+async def obs_disconnect_command(ctx):
+	if not ctx.author.is_mod:
+		return
+	dat.ws.disconnect()
 
 @bot.command(name='motion', aliases=['m'])
 async def motion_command(ctx, *arg):

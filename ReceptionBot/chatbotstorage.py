@@ -1,4 +1,5 @@
 import os
+from obswebsocket import obsws
 
 class ChatbotStorage:
 	
@@ -6,6 +7,9 @@ class ChatbotStorage:
 		self.viewer = []
 		self.lurker = []
 		self.denylist = [os.environ['BOT_NICK'], "streamelements", "Streamlabs", "Nightbot"]
+		self.motionkey = str
+		self.motionEN = bool
+		self.ws = obsws
 
 	def getViewerCount(self):
 		return len(self.viewer)
