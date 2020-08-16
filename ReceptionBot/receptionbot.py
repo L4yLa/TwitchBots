@@ -1,4 +1,6 @@
 import os
+import re
+import threading
 import simpleaudio
 import pyautogui
 from twitchio.ext import commands
@@ -6,12 +8,15 @@ from obswebsocket import obsws, requests
 
 from chatbotstorage import ChatbotStorage
 
+DEBUG = False
+
 bot = commands.Bot(
 	irc_token = os.environ['TMI_TOKEN'],
 	client_id = os.environ['CLIENT_ID'],
 	nick      = os.environ['BOT_NICK'],
 	prefix    = os.environ['BOT_PREFIX'],
-	initial_channels = [os.environ['CHANNEL']]
+	initial_channels = [os.environ['CHANNEL']],
+	webhook_server   = False
 )
 
 dat = ChatbotStorage() # bot内管理データ:bot internal manage data
@@ -24,6 +29,20 @@ botname = os.environ['BOT_NICK']
 @bot.event
 async def event_ready():
 	print(f"Bot {botname} is ready.")
+
+@bot.event
+async def event_raw_data(data):
+	if DEBUG:
+		print("[RAW]", data)
+
+	# Raid Detection
+	if not "PRIVMSG" in data:
+		if "USERNOTICE" in data and "msg-id=raid" in data:
+			mname = re.search('msg-param-displayName\=(.+?);', data)
+			mvcnt = re.search('msg-param-viewerCount\=([0-9]+?);', data)
+			print("[RAID]", mname.group(1), "raiding with", mvcnt.group(1), "viewers!!")
+#			if dat.obsConnected:
+#				dat.ws.call(requests.SetCurrentScene("raid")) # OBS scene change
 
 #
 #  commands (everyone)
@@ -55,6 +74,11 @@ async def test_command(ctx):
 #	@bot.command(name='twitter')
 #	async def twitter_command(ctx):
 #		ctx.channel.send("Please follow my twitter!! https://twitter.com/twitter")
+#
+# Shoutoutするcommand
+#	@bot.command(name='shoutout', aliases=['so'])
+#	async def shoutout_command(ctx, *arg):
+#		ctx.channel.send("Please check this awesome streamer!! {arg[0]}")
 
 
 
@@ -65,22 +89,16 @@ async def test_command(ctx):
 async def quit_command(ctx):
 	if not ctx.author.is_mod:
 		return
+	dat.fQuit = True
 	# bot.close() # will be impliment on TwitchIO 2.0
 	exit()
 
-#	@bot.command(name='lurkers')
-#	async def lurkers_command(ctx):
+#	@bot.command(name='viewers')
+#	async def viewers_command(ctx):
 #		if not ctx.author.is_mod:
 #			return
-#		lurkerList = dat.getLurker()
-#		print(lurkerList)
-
-@bot.command(name='viewers')
-async def viewers_command(ctx):
-	if not ctx.author.is_mod:
-		return
-	viewerList = dat.getViewer()
-	print(viewerList)
+#		viewerList = dat.getViewer()
+#		print(viewerList)
 
 @bot.command(name='beep')
 async def beep_command(ctx):
@@ -95,28 +113,33 @@ async def obs_connect_command(ctx):
 		return
 	dat.ws = obsws('localhost', 4444, "password") # change as your OBS setting
 	dat.ws.connect()
+	dat.obsConnected = True
 
-@bot.command(name='oscenelist', aliases=['ol','osl','oscenes'])
+@bot.command(name='oscenelist', aliases=['ol', 'osl', 'oscenes'])
 async def obs_scenelist_command(ctx):
 	if not ctx.author.is_mod:
 		return
-	scenes = dat.ws.call(requests.GetSceneList())
-	if scenes.status:
-		print("[Scenes]")
-		for s in scenes.getScenes():
-			print(s["name"])
+	if dat.obsConnected:
+		scenes = dat.ws.call(requests.GetSceneList())
+		if scenes.status:
+			print("[Scenes]")
+			for s in scenes.getScenes():
+				print(s["name"])
 
 @bot.command(name='oscene', aliases=['os'])
 async def obs_scenechange_command(ctx, name):
 	if not ctx.author.is_mod:
 		return
-	res = dat.ws.call(requests.SetCurrentScene(name))
+	if dat.obsConnected:
+		res = dat.ws.call(requests.SetCurrentScene(name))
 
 @bot.command(name='odisconnect', aliases=['odc'])
 async def obs_disconnect_command(ctx):
 	if not ctx.author.is_mod:
 		return
-	dat.ws.disconnect()
+	if dat.obsConnected:
+		dat.ws.disconnect()
+		dat.obsConnected = False
 
 @bot.command(name='motion', aliases=['m'])
 async def motion_command(ctx, *arg):
@@ -153,6 +176,9 @@ async def motion_command(ctx, *arg):
 # 
 @bot.event
 async def event_message(message):
+	if dat.fQuit:
+		# bot.close() # will be impliment on TwitchIO 2.0
+		exit()
 	
 	if not dat.isInDenylist(message.author.name):
 		if dat.isNewViewer(message.author.name):
@@ -174,8 +200,31 @@ async def event_message(message):
 	# If you override event_message you will need to handle_commands for commands to work.
 	await bot.handle_commands(message)
 
+def interpreter():
+	while(not dat.fQuit):
+		cmd = input()
+		if cmd.lower() in {"quit", "q"}:
+			if not dat.fQuit:
+				dat.fQuit = True
+				print("Quit Bot")
+			break
+		elif cmd.lower() in {"viewers", "v"}:
+			print(len(dat.viewer), "viewers:", dat.viewer)
+#		elif cmd.lower() in {"lurkers", "l"}:
+#			print(len(dat.lurker), "lurkers:", dat.lurker)
+		elif cmd != "":
+			print("[CONSOLE]", cmd, "is invalid command.")
+	print("interpreter end.")
 
 if __name__ == "__main__":
+	# init
 	dat.motionkey = "e"
 	dat.motionEN = False
-	bot.run()
+	dat.fQuit = False
+	dat.obsConnected = False
+	t = threading.Thread(target=bot.run)
+
+	# run
+	t.start()
+	interpreter()
+	t.join()

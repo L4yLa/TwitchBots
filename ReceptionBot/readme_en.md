@@ -32,7 +32,6 @@ Enter the channel name of the channel you want to use the bot for in CHANNEL.
 
 Fill out like this:
 
---.env-->
 ```
 TMI_TOKEN=oauth:aabbccddeeffgg0011223344556677
 CLIENT_ID=0123456789abcdefghijklmnopqrst
@@ -40,12 +39,11 @@ BOT_NICK=botchannelname
 BOT_PREFIX=!
 CHANNEL=#loginchannelname
 ```
-<--.env--
 
 
 ## 4. Startup
 
-* run startbot.bat
+* double click 'Run_Receptionbot' shortcut.
 
 
 ---

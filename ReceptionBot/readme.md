@@ -32,7 +32,6 @@ CHANNEL にはbotを使用したいチャンネル名を入力してください。
 
 以下のようになります：
 
---.env-->
 ```
 TMI_TOKEN=oauth:aabbccddeeffgg0011223344556677
 CLIENT_ID=0123456789abcdefghijklmnopqrst
@@ -40,13 +39,11 @@ BOT_NICK=botchannelname
 BOT_PREFIX=!
 CHANNEL=#loginchannelname
 ```
-<--.env--
 
 
 ## 4. 起動
 
-* startbot.batを実行してください。
-* run startbot.bat
+* 'Receptionbotの起動'ショートカットをダブルクリックしてください。
 
 
 ---

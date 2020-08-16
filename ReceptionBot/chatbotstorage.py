@@ -10,6 +10,8 @@ class ChatbotStorage:
 		self.motionkey = str
 		self.motionEN = bool
 		self.ws = obsws
+		self.obsConnected = bool
+		self.fQuit = bool
 
 	def getViewerCount(self):
 		return len(self.viewer)
