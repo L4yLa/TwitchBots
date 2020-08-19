@@ -20,11 +20,14 @@ bot = commands.Bot(
 )
 
 dat = ChatbotStorage() # bot内管理データ:bot internal manage data
-
 gBeep = simpleaudio.WaveObject.from_wave_file("beep.wav") # 通知音:New-viewer notification sound
-
 channelname = os.environ['CHANNEL'].replace('#', '');
 botname = os.environ['BOT_NICK']
+
+# OBS Websocket
+OBSHost='localhost'
+OBSPort=4444
+OBSPass="password"
 
 @bot.event
 async def event_ready():
@@ -51,19 +54,6 @@ async def event_raw_data(data):
 async def test_command(ctx):
 	print(f'test message for {ctx.author.name}') # print something to console
 	await ctx.channel.send(f'test message for {ctx.author.name}') # comment to chat
-
-# lurk command
-#	@bot.command(name='lurk', aliases=['l'])
-#	async def lurk_command(ctx):
-#		if not dat.isLurking(ctx.author.name):
-#			dat.toLurk(ctx.author.name)
-#			print(f'{ctx.author.name} -> lurk')
-#	
-#	@bot.command(name='unlurk', aliases=['ul'])
-#	async def unlurk_command(ctx):
-#		if dat.isLurking(ctx.author.name):
-#			dat.unLurk(ctx.author.name)
-#			print(f'{ctx.author.name} <- unlurk')
 
 # Discordのリンクを表示するcommand
 #	@bot.command(name='discord')
@@ -107,15 +97,16 @@ async def beep_command(ctx):
 	simpleaudio.stop_all()
 	gBeep.play()
 
-@bot.command(name='oconnect', aliases=['oc'])
+@bot.command(name='obsconnect', aliases=['oc'])
 async def obs_connect_command(ctx):
 	if not ctx.author.is_mod:
 		return
-	dat.ws = obsws('localhost', 4444, "password") # change as your OBS setting
-	dat.ws.connect()
-	dat.obsConnected = True
+	if not dat.obsConnected:
+		dat.ws = obsws(OBSHost, OBSPort, OBSPass) # change as your OBS setting
+		dat.ws.connect()
+		dat.obsConnected = True
 
-@bot.command(name='oscenelist', aliases=['ol', 'osl', 'oscenes'])
+@bot.command(name='obsscenelist', aliases=['oscenes', 'ol', 'l'])
 async def obs_scenelist_command(ctx):
 	if not ctx.author.is_mod:
 		return
@@ -126,14 +117,14 @@ async def obs_scenelist_command(ctx):
 			for s in scenes.getScenes():
 				print(s["name"])
 
-@bot.command(name='oscene', aliases=['os'])
+@bot.command(name='obsscene', aliases=['os', 's'])
 async def obs_scenechange_command(ctx, name):
 	if not ctx.author.is_mod:
 		return
 	if dat.obsConnected:
 		res = dat.ws.call(requests.SetCurrentScene(name))
 
-@bot.command(name='odisconnect', aliases=['odc'])
+@bot.command(name='obsdisconnect', aliases=['odc'])
 async def obs_disconnect_command(ctx):
 	if not ctx.author.is_mod:
 		return
@@ -210,8 +201,16 @@ def interpreter():
 			break
 		elif cmd.lower() in {"viewers", "v"}:
 			print(len(dat.viewer), "viewers:", dat.viewer)
-#		elif cmd.lower() in {"lurkers", "l"}:
-#			print(len(dat.lurker), "lurkers:", dat.lurker)
+		elif cmd.lower() in {"obsconnect", "oc"}:
+			if not dat.obsConnected:
+				dat.ws = obsws(OBSHost, OBSPort, OBSPass) # change as your OBS setting
+				dat.ws.connect()
+				dat.obsConnected = True
+				print("OBS Connected.")
+		elif cmd.lower() in {"obsdisconnect", "odc"}:
+			if dat.obsConnected:
+				dat.ws.disconnect()
+				dat.obsConnected = False
 		elif cmd != "":
 			print("[CONSOLE]", cmd, "is invalid command.")
 	print("interpreter end.")
