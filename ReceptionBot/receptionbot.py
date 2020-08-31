@@ -185,8 +185,14 @@ async def event_message(message):
 			if dat.motionEN:
 				pyautogui.typewrite([dat.motionkey])
 
+			# 表示名取得：get display-name
+			disp_name = re.search('display-name\=(.+?);', message.raw_data).group(1)
+
 			# メッセージを表示：print message
-			print(f'[New Viewer] {message.author.name} is coming!') # to console
+			if disp_name == None:
+				print(f'[New Viewer] {message.author.name} is coming!') # to console
+			else:
+				print(f'[New Viewer] {disp_name}({message.author.name}) is coming!') # to console
 	
 	# If you override event_message you will need to handle_commands for commands to work.
 	await bot.handle_commands(message)
