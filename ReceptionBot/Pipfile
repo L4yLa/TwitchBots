@@ -8,8 +8,10 @@ verify_ssl = true
 [packages]
 twitchio = "*"
 simpleaudio = "*"
-pyautogui = "*"
+keyboard = "*"
 obs-websocket-py = "*"
+requests = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.7"
