@@ -56,6 +56,9 @@ CHANNEL=#loginchannelname
    SE\bell\beep.wav：ドアベルSE
    SE\silent\beep.wav：無音
 
+3. (shoutout_selfのみ)：本体と同じディレクトリにある raidmessage.txt を編集することで、
+   シャウトアウトのメッセージが変更できます。詳細は同ファイルを確認してください。
+
 
 ## 5. 起動
 
