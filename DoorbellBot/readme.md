@@ -1,5 +1,5 @@
 
-# AutoShoutout twitch chatbot
+# DoorbellBot twitch chatbot
 
 * TwitchIO   : Version 1.1.0
 
