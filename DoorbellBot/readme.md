@@ -49,8 +49,8 @@ CHANNEL=#loginchannelname
    DoorbellBot と DoorbellBot_withShoutout のどちらかのディレクトリにある doorbellbot.exe が本体です。
    それぞれ以下のように使い分けてください。
 
-   DoorbellBot：botを起動してから初回チャットの人がいたときに音を鳴らします。
-   DoorbellBot_withShoutout：上記に加えて自動so/soコマンド機能が追加されています。
+   * DoorbellBot：botを起動してから初回チャットの人がいたときに音を鳴らします。
+   * DoorbellBot_withShoutout：上記に加えて自動so/soコマンド機能が追加されています。
    
 2. 本体と同じディレクトリに beep.wav と 手順3で用意した .env を配置してください。
    beep.wav は初回チャット時のSEになります。
