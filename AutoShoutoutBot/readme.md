@@ -8,16 +8,8 @@
 * Raidを検知してシャウトアウトを自動でコメントするbotです
 
 
-## 2. 前提環境
 
-* Python 3.6 以降
-  → https://www.python.org/
-
-* pipenv
-  → $ pip install pipenv
-
-
-## 3. 必要情報の設定
+## 2. 必要情報の設定
 
 1. OAuthパスワードの作成
    → https://twitchapps.com/tmi/
@@ -41,7 +33,8 @@ CHANNEL=#loginchannelname
 ```
 
 
-## 4. 実行ファイルと必要ファイル
+
+## 3. 実行ファイルと必要ファイル
 
 1. 本体 (autoshoutoutbot.exe)
    shoutout ディレクトリにある autoshoutoutbot.exe が本体です。
@@ -58,12 +51,14 @@ CHANNEL=#loginchannelname
 4. 本体と同じディレクトリにある adlist.txt を編集することで、
    コメント時に自動シャウトアウトするユーザーを指定できます（英字のユーザーIDを入力してください）。
    複数人登録したいときは改行して追加してください。
+   ```
    例：
    l4yla_coop
    l4yla_bot
+   ```
 
 
-## 5. 起動
+## 4. 起動
 
 * autoshoutoutbot.exe をダブルクリックしてください。
 
