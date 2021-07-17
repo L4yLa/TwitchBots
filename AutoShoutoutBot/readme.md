@@ -44,11 +44,7 @@ CHANNEL=#loginchannelname
 ## 4. 実行ファイルと必要ファイル
 
 1. 本体 (autoshoutoutbot.exe)
-   shoutout_bot と shoutout_self のどちらかのディレクトリにある autoshoutoutbot.exe が本体です。
-   それぞれ以下のように使い分けてください。
-
-   shoutout_bot：他のチャットボットサービスの!soコマンドがある場合
-   shoutout_self：チャットボットサービスを使っていない または !soコマンドが無い場合
+   shoutout ディレクトリにある autoshoutoutbot.exe が本体です。
    
 2. 本体と同じディレクトリに beep.wav と 手順3で用意した .env を配置してください。
    beep.wav はSEディレクトリの中から好みに応じて好きな方を配置してください。
@@ -56,8 +52,15 @@ CHANNEL=#loginchannelname
    SE\bell\beep.wav：ドアベルSE
    SE\silent\beep.wav：無音
 
-3. (shoutout_selfのみ)：本体と同じディレクトリにある raidmessage.txt を編集することで、
+3. 本体と同じディレクトリにある raidmessage.txt を編集することで、
    シャウトアウトのメッセージが変更できます。詳細は同ファイルを確認してください。
+
+4. 本体と同じディレクトリにある adlist.txt を編集することで、
+   コメント時に自動シャウトアウトするユーザーを指定できます（英字のユーザーIDを入力してください）。
+   複数人登録したいときは改行して追加してください。
+   例：
+   l4yla_coop
+   l4yla_bot
 
 
 ## 5. 起動
