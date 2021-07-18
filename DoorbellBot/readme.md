@@ -8,18 +8,10 @@
 * 配信に来た人の初回のチャットをwaveファイルを再生して通知します。
 * (withShoutoutだけ) Raidを検知してシャウトアウトを自動でコメントします。
 * (withShoutoutだけ) !soコマンドでシャウトアウトメッセージをコメントします。
+* (withShoutoutだけ) 指定したユーザーの初コメントで自動的にシャウトアウトができます。
 
 
-## 2. 前提環境
-
-* Python 3.6 以降
-  → https://www.python.org/
-
-* pipenv
-  → $ pip install pipenv
-
-
-## 3. 必要情報の設定
+## 2. 必要情報の設定
 
 1. OAuthパスワードの作成
    → https://twitchapps.com/tmi/
@@ -43,7 +35,7 @@ CHANNEL=#loginchannelname
 ```
 
 
-## 4. 実行ファイルと必要ファイル
+## 3. 実行ファイルと必要ファイル
 
 1. 本体 (doorbellbot.exe)
    DoorbellBot と DoorbellBot_withShoutout のどちらかのディレクトリにある doorbellbot.exe が本体です。
@@ -59,8 +51,16 @@ CHANNEL=#loginchannelname
 3. 本体と同じディレクトリにある raidmessage.txt を編集することで、
    シャウトアウトのメッセージが変更できます。詳細は同ファイルを確認してください。
 
+4. 本体と同じディレクトリにある adlist.txt を編集することで、
+   コメント時に自動シャウトアウトするユーザーを指定できます（英字のユーザーIDを入力してください）。
+   複数人登録したいときは改行して追加してください。
+   ```
+   例：
+   l4yla_coop
+   l4yla_bot
+   ```
 
-## 5. 起動
+## 4. 起動
 
 * doorbellbot.exe をダブルクリックしてください。
 
