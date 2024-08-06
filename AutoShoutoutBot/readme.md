@@ -3,26 +3,26 @@
 
 * TwitchIO   : Version 1.1.0
 
-## 1. ŠT—v
+## 1. æ¦‚è¦
 
-* Raid‚ðŒŸ’m‚µ‚ÄƒVƒƒƒEƒgƒAƒEƒg‚ðŽ©“®‚ÅƒRƒƒ“ƒg‚·‚ébot‚Å‚·
-* Žw’è‚µ‚½ƒ†[ƒU[‚Ì‰ƒRƒƒ“ƒg‚ÅŽ©“®“I‚ÉƒVƒƒƒEƒgƒAƒEƒg‚Å‚«‚Ü‚·B
+* Raidã‚’æ¤œçŸ¥ã—ã¦ã‚·ãƒ£ã‚¦ãƒˆã‚¢ã‚¦ãƒˆã‚’è‡ªå‹•ã§ã‚³ãƒ¡ãƒ³ãƒˆã™ã‚‹botã§ã™
+* æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ãƒ¼ã®åˆã‚³ãƒ¡ãƒ³ãƒˆã§è‡ªå‹•çš„ã«ã‚·ãƒ£ã‚¦ãƒˆã‚¢ã‚¦ãƒˆã§ãã¾ã™ã€‚
 
 
-## 2. •K—vî•ñ‚ÌÝ’è
+## 2. å¿…è¦æƒ…å ±ã®è¨­å®š
 
-1. OAuthƒpƒXƒ[ƒh‚Ìì¬
-   ¨ https://twitchapps.com/tmi/
+1. OAuthãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã®ä½œæˆ
+   â†’ https://twitchapps.com/tmi/
 
-2. Twitch Developers‚ÅƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ð“o˜^‚µ‚ÄƒNƒ‰ƒCƒAƒ“ƒgID‚ðŽæ“¾
-   ¨ https://dev.twitch.tv/
+2. Twitch Developersã§ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ç™»éŒ²ã—ã¦ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆIDã‚’å–å¾—
+   â†’ https://dev.twitch.tv/
 
-3. .envƒtƒ@ƒCƒ‹‚É•K—vî•ñ‚ð‹L“ü
+3. .envãƒ•ã‚¡ã‚¤ãƒ«ã«å¿…è¦æƒ…å ±ã‚’è¨˜å…¥
 
-BOT_NICK ‚É‚Í(1,2)‚ÅŽæ“¾‚µ‚½ƒAƒJƒEƒ“ƒg‚Ìƒ`ƒƒƒ“ƒlƒ‹–¼‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B
-CHANNEL ‚É‚Íbot‚ðŽg—p‚µ‚½‚¢ƒ`ƒƒƒ“ƒlƒ‹–¼‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B
+BOT_NICK ã«ã¯(1,2)ã§å–å¾—ã—ãŸã‚¢ã‚«ã‚¦ãƒ³ãƒˆã®ãƒãƒ£ãƒ³ãƒãƒ«åã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚
+CHANNEL ã«ã¯botã‚’ä½¿ç”¨ã—ãŸã„ãƒãƒ£ãƒ³ãƒãƒ«åã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚
 
-ˆÈ‰º‚Ì‚æ‚¤‚É‚È‚è‚Ü‚·F
+ä»¥ä¸‹ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ï¼š
 
 ```
 TMI_TOKEN=oauth:aabbccddeeffgg0011223344556677
@@ -34,33 +34,34 @@ CHANNEL=#loginchannelname
 
 
 
-## 3. ŽÀsƒtƒ@ƒCƒ‹‚Æ•K—vƒtƒ@ƒCƒ‹
+## 3. å®Ÿè¡Œãƒ•ã‚¡ã‚¤ãƒ«ã¨å¿…è¦ãƒ•ã‚¡ã‚¤ãƒ«
 
-1. –{‘Ì (autoshoutoutbot.exe)
-   shoutout ƒfƒBƒŒƒNƒgƒŠ‚É‚ ‚é autoshoutoutbot.exe ‚ª–{‘Ì‚Å‚·B
+1. æœ¬ä½“ (autoshoutoutbot.exe)
+   shoutout ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ã‚ã‚‹ autoshoutoutbot.exe ãŒæœ¬ä½“ã§ã™ã€‚
    
-2. –{‘Ì‚Æ“¯‚¶ƒfƒBƒŒƒNƒgƒŠ‚É beep.wav ‚Æ Žè‡3‚Å—pˆÓ‚µ‚½ .env ‚ð”z’u‚µ‚Ä‚­‚¾‚³‚¢B
-   beep.wav ‚ÍSEƒfƒBƒŒƒNƒgƒŠ‚Ì’†‚©‚çD‚Ý‚É‰ž‚¶‚ÄD‚«‚È•û‚ð”z’u‚µ‚Ä‚­‚¾‚³‚¢B
+2. æœ¬ä½“ã¨åŒã˜ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã« beep.wav ã¨ æ‰‹é †3ã§ç”¨æ„ã—ãŸ .env ã‚’é…ç½®ã—ã¦ãã ã•ã„ã€‚
 
-   SE\bell\beep.wavFƒhƒAƒxƒ‹SE
-   SE\silent\beep.wavF–³‰¹
+3. beep.wav ã‚’SEãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ä¸­ã‹ã‚‰å¥½ã¿ã«å¿œã˜ã¦å¥½ããªæ–¹ã‚’é…ç½®ã—ã¦ãã ã•ã„ã€‚
 
-3. –{‘Ì‚Æ“¯‚¶ƒfƒBƒŒƒNƒgƒŠ‚É‚ ‚é raidmessage.txt ‚ð•ÒW‚·‚é‚±‚Æ‚ÅA
-   ƒVƒƒƒEƒgƒAƒEƒg‚ÌƒƒbƒZ[ƒW‚ª•ÏX‚Å‚«‚Ü‚·BÚ×‚Í“¯ƒtƒ@ƒCƒ‹‚ðŠm”F‚µ‚Ä‚­‚¾‚³‚¢B
+   SE\bell\beep.wavï¼šãƒ‰ã‚¢ãƒ™ãƒ«SE
+   SE\silent\beep.wavï¼šç„¡éŸ³
 
-4. –{‘Ì‚Æ“¯‚¶ƒfƒBƒŒƒNƒgƒŠ‚É‚ ‚é adlist.txt ‚ð•ÒW‚·‚é‚±‚Æ‚ÅA
-   ƒRƒƒ“ƒgŽž‚ÉŽ©“®ƒVƒƒƒEƒgƒAƒEƒg‚·‚éƒ†[ƒU[‚ðŽw’è‚Å‚«‚Ü‚·i‰pŽš‚Ìƒ†[ƒU[ID‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢jB
-   •¡”l“o˜^‚µ‚½‚¢‚Æ‚«‚Í‰üs‚µ‚Ä’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢B
+4. æœ¬ä½“ã¨åŒã˜ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ã‚ã‚‹ raidmessage.txt ã‚’ç·¨é›†ã™ã‚‹ã“ã¨ã§ã€
+   ã‚·ãƒ£ã‚¦ãƒˆã‚¢ã‚¦ãƒˆã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒå¤‰æ›´ã§ãã¾ã™ã€‚è©³ç´°ã¯åŒãƒ•ã‚¡ã‚¤ãƒ«ã‚’ç¢ºèªã—ã¦ãã ã•ã„ã€‚
+
+5. æœ¬ä½“ã¨åŒã˜ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ã‚ã‚‹ adlist.txt ã‚’ç·¨é›†ã™ã‚‹ã“ã¨ã§ã€
+   ã‚³ãƒ¡ãƒ³ãƒˆæ™‚ã«è‡ªå‹•ã‚·ãƒ£ã‚¦ãƒˆã‚¢ã‚¦ãƒˆã™ã‚‹ãƒ¦ãƒ¼ã‚¶ãƒ¼ã‚’æŒ‡å®šã§ãã¾ã™ï¼ˆè‹±å­—ã®ãƒ¦ãƒ¼ã‚¶ãƒ¼IDã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ï¼‰ã€‚
+   è¤‡æ•°äººç™»éŒ²ã—ãŸã„ã¨ãã¯æ”¹è¡Œã—ã¦è¿½åŠ ã—ã¦ãã ã•ã„ã€‚
    ```
-   —áF
+   ä¾‹ï¼š
    l4yla_coop
    l4yla_bot
    ```
 
 
-## 4. ‹N“®
+## 4. èµ·å‹•
 
-* autoshoutoutbot.exe ‚ðƒ_ƒuƒ‹ƒNƒŠƒbƒN‚µ‚Ä‚­‚¾‚³‚¢B
+* autoshoutoutbot.exe ã‚’ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãã ã•ã„ã€‚
 
 
 ---
