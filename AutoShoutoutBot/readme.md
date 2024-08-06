@@ -43,7 +43,7 @@ CHANNEL=#loginchannelname
 
 3. beep.wav をSEディレクトリの中から好みに応じて好きな方を配置してください。
 
-   SE\bell\beep.wav：ドアベルSE
+   SE\bell\beep.wav：ドアベルSE<br>
    SE\silent\beep.wav：無音
 
 4. 本体と同じディレクトリにある raidmessage.txt を編集することで、
